@@ -134,29 +134,6 @@ app.get('/api/tmdb/movies/:category', async (req, res) => {
   }
 });
 
-app.get('/api/tmdb/tv/:category', async (req, res) => {
-  try {
-    const { category } = req.params;
-    const page = req.query.page || 1;
-    
-    const validCategories = ['airing_today', 'on_the_air', 'popular', 'top_rated'];
-    if (!validCategories.includes(category)) {
-      return res.status(400).json({ 
-        error: 'Invalid category',
-        validCategories 
-      });
-    }
-    
-    const data = await makeTMDBRequest(`/tv/${category}`, { page });
-    res.json(data);
-  } catch (error) {
-    res.status(500).json({ 
-      error: 'Failed to fetch TV shows',
-      message: error.message 
-    });
-  }
-});
-
 app.get('/api/tmdb/movie/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -171,6 +148,28 @@ app.get('/api/tmdb/movie/:id', async (req, res) => {
   } catch (error) {
     res.status(500).json({ 
       error: 'Failed to fetch movie details',
+      message: error.message 
+    });
+  }
+});
+
+app.get('/api/tmdb/tv/:id/season/:seasonNumber', async (req, res) => {
+  try {
+    const { id, seasonNumber } = req.params;
+    
+    if (!id || isNaN(id)) {
+      return res.status(400).json({ error: 'Invalid TV show ID' });
+    }
+    
+    if (!seasonNumber || isNaN(seasonNumber)) {
+      return res.status(400).json({ error: 'Invalid season number' });
+    }
+    
+    const data = await makeTMDBRequest(`/tv/${id}/season/${seasonNumber}`);
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ 
+      error: 'Failed to fetch TV show season details',
       message: error.message 
     });
   }
@@ -195,23 +194,24 @@ app.get('/api/tmdb/tv/:id', async (req, res) => {
   }
 });
 
-app.get('/api/tmdb/tv/:id/season/:seasonNumber', async (req, res) => {
+app.get('/api/tmdb/tv/:category', async (req, res) => {
   try {
-    const { id, seasonNumber } = req.params;
+    const { category } = req.params;
+    const page = req.query.page || 1;
     
-    if (!id || isNaN(id)) {
-      return res.status(400).json({ error: 'Invalid TV show ID' });
+    const validCategories = ['airing_today', 'on_the_air', 'popular', 'top_rated'];
+    if (!validCategories.includes(category)) {
+      return res.status(400).json({ 
+        error: 'Invalid category',
+        validCategories 
+      });
     }
     
-    if (!seasonNumber || isNaN(seasonNumber)) {
-      return res.status(400).json({ error: 'Invalid season number' });
-    }
-    
-    const data = await makeTMDBRequest(`/tv/${id}/season/${seasonNumber}`);
+    const data = await makeTMDBRequest(`/tv/${category}`, { page });
     res.json(data);
   } catch (error) {
     res.status(500).json({ 
-      error: 'Failed to fetch TV show season details',
+      error: 'Failed to fetch TV shows',
       message: error.message 
     });
   }
