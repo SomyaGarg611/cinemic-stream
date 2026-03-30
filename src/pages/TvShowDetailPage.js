@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTvShowDetails, fetchTvShowSeason } from '../redux/slices/tvShowsSlice';
-import { playTrailer } from '../redux/slices/uiSlice';
-import { getImageUrl, formatDate, getTrailerKey } from '../utils/helpers';
-import LoadingSpinner from '../components/common/LoadingSpinner';
-import MediaCard from '../components/common/MediaCard';
-import StreamingModal from '../components/common/StreamingModal';
+import { fetchTvShowDetails, fetchTvShowSeason } from 'redux/slices/tvShowsSlice';
+import { playTrailer } from 'redux/slices/uiSlice';
+import { getImageUrl, formatDate, getTrailerKey } from 'utils/helpers';
+import LoadingSpinner from 'components/common/LoadingSpinner';
+import MediaCard from 'components/common/MediaCard';
+import StreamingModal from 'components/common/StreamingModal';
 
 const TvShowDetailPage = () => {
   const { id } = useParams();

@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { fetchGenres } from './redux/slices/searchSlice';
-import Layout from './components/layout/Layout';
-import HomePage from './pages/HomePage';
-import MoviesPage from './pages/MoviesPage';
-import TvShowsPage from './pages/TvShowsPage';
-import TrendingPage from './pages/TrendingPage';
-import MovieDetailPage from './pages/MovieDetailPage';
-import TvShowDetailPage from './pages/TvShowDetailPage';
-import SearchPage from './pages/SearchPage';
-import GenresPage from './pages/GenresPage';
-import TermsOfServicePage from './pages/TermsOfServicePage';
-import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
-import DisclaimerPage from './pages/DisclaimerPage';
-import ContactPage from './pages/ContactPage';
+import { fetchGenres } from 'redux/slices/searchSlice';
+import Layout from 'components/layout/Layout';
+import HomePage from 'pages/HomePage';
+import MoviesPage from 'pages/MoviesPage';
+import TvShowsPage from 'pages/TvShowsPage';
+import TrendingPage from 'pages/TrendingPage';
+import MovieDetailPage from 'pages/MovieDetailPage';
+import TvShowDetailPage from 'pages/TvShowDetailPage';
+import SearchPage from 'pages/SearchPage';
+import GenresPage from 'pages/GenresPage';
+import TermsOfServicePage from 'pages/TermsOfServicePage';
+import PrivacyPolicyPage from 'pages/PrivacyPolicyPage';
+import DisclaimerPage from 'pages/DisclaimerPage';
+import ContactPage from 'pages/ContactPage';
 import './App.css';
 
 function App() {

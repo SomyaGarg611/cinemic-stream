@@ -1,8 +1,8 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from './Header';
-import Footer from './Footer';
-import TrailerModal from '../common/TrailerModal';
+import Header from 'components/layout/Header';
+import Footer from 'components/layout/Footer';
+import TrailerModal from 'components/common/TrailerModal';
 
 const Layout = () => {
   return (

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { searchMedia, setSearchType } from '../redux/slices/searchSlice';
-import HeroSection from '../components/common/HeroSection';
-import MediaGrid from '../components/common/MediaGrid';
-import LoadingSpinner from '../components/common/LoadingSpinner';
+import { searchMedia, setSearchType } from 'redux/slices/searchSlice';
+import HeroSection from 'components/common/HeroSection';
+import MediaGrid from 'components/common/MediaGrid';
+import LoadingSpinner from 'components/common/LoadingSpinner';
 
 const SearchPage = () => {
   const location = useLocation();

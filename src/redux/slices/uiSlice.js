@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import tmdbApi from '../../services/tmdbApi';
+import tmdbApi from 'services/tmdbApi';
 
 // Async thunk to fetch videos for a specific movie or TV show
 export const fetchVideosAndPlayTrailer = createAsyncThunk(
