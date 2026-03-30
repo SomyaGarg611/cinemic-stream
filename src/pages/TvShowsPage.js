@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTvShowsByCategory } from 'redux/slices/tvShowsSlice';
-import LoadingSpinner from 'components/common/LoadingSpinner';
-import MediaGrid from 'components/common/MediaGrid';
-import HeroSection from 'components/common/HeroSection';
+import { fetchTvShowsByCategory } from '../redux/slices/tvShowsSlice';
+import LoadingSpinner from '../components/common/LoadingSpinner';
+import MediaGrid from '../components/common/MediaGrid';
+import HeroSection from '../components/common/HeroSection';
 
 // Map API category names to Redux state properties (moved outside component)
 const categoryToStateMap = {

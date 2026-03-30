@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import tmdbApi from 'services/tmdbApi';
+import tmdbApi from '../../services/tmdbApi';
 
 // Async thunks for fetching TV shows
 export const fetchTrendingTvShows = createAsyncThunk(

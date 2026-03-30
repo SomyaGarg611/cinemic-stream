@@ -1,6 +1,6 @@
 import React from 'react';
-import MediaCard from 'components/common/MediaCard';
-import LoadingSpinner from 'components/common/LoadingSpinner';
+import MediaCard from './MediaCard';
+import LoadingSpinner from './LoadingSpinner';
 
 const MediaGrid = ({ items, mediaType, loading = false, emptyMessage = 'No items found' }) => {
   if (loading) {

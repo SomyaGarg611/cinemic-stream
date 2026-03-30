@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { playTrailer, fetchVideosAndPlayTrailer } from 'redux/slices/uiSlice';
-import { getImageUrl, getTrailerKey } from 'utils/helpers';
+import { playTrailer, fetchVideosAndPlayTrailer } from '../../redux/slices/uiSlice';
+import { getImageUrl, getTrailerKey } from '../../utils/helpers';
 
 const MediaCard = ({ item, mediaType }) => {
   const dispatch = useDispatch();

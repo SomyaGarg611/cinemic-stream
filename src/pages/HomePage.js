@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTrendingMovies, fetchMoviesByCategory } from 'redux/slices/moviesSlice';
-import { fetchTrendingTvShows, fetchTvShowsByCategory } from 'redux/slices/tvShowsSlice';
-import { getImageUrl } from 'utils/helpers';
-import Slider from 'components/common/Slider';
-import MediaCard from 'components/common/MediaCard';
-import LoadingSpinner from 'components/common/LoadingSpinner';
+import { fetchTrendingMovies, fetchMoviesByCategory } from '../redux/slices/moviesSlice';
+import { fetchTrendingTvShows, fetchTvShowsByCategory } from '../redux/slices/tvShowsSlice';
+import { getImageUrl } from '../utils/helpers';
+import Slider from '../components/common/Slider';
+import MediaCard from '../components/common/MediaCard';
+import LoadingSpinner from '../components/common/LoadingSpinner';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {

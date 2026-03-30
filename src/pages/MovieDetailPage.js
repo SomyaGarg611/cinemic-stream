@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMovieDetails } from 'redux/slices/moviesSlice';
-import { playTrailer } from 'redux/slices/uiSlice';
-import { getImageUrl, formatRuntime, formatDate, formatNumber, getTrailerKey } from 'utils/helpers';
-import LoadingSpinner from 'components/common/LoadingSpinner';
-import MediaCard from 'components/common/MediaCard';
-import StreamingModal from 'components/common/StreamingModal';
+import { fetchMovieDetails } from '../redux/slices/moviesSlice';
+import { playTrailer } from '../redux/slices/uiSlice';
+import { getImageUrl, formatRuntime, formatDate, formatNumber, getTrailerKey } from '../utils/helpers';
+import LoadingSpinner from '../components/common/LoadingSpinner';
+import MediaCard from '../components/common/MediaCard';
+import StreamingModal from '../components/common/StreamingModal';
 
 const MovieDetailPage = () => {
   const { id } = useParams();

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeTrailer } from 'redux/slices/uiSlice';
+import { closeTrailer } from '../../redux/slices/uiSlice';
 
 const TrailerModal = () => {
   const { isTrailerPlaying, currentTrailerKey } = useSelector(state => state.ui);

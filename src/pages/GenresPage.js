@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMoviesByGenre } from 'redux/slices/moviesSlice';
-import { fetchTvShowsByGenre } from 'redux/slices/tvShowsSlice';
-import MediaGrid from 'components/common/MediaGrid';
-import LoadingSpinner from 'components/common/LoadingSpinner';
+import { fetchMoviesByGenre } from '../redux/slices/moviesSlice';
+import { fetchTvShowsByGenre } from '../redux/slices/tvShowsSlice';
+import MediaGrid from '../components/common/MediaGrid';
+import LoadingSpinner from '../components/common/LoadingSpinner';
 
 const GenresPage = () => {
   const { genreName } = useParams();
