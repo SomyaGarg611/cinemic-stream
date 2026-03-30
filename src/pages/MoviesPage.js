@@ -5,6 +5,14 @@ import LoadingSpinner from '../components/common/LoadingSpinner';
 import MediaGrid from '../components/common/MediaGrid';
 import HeroSection from '../components/common/HeroSection';
 
+// Map API category names to Redux state properties (moved outside component)
+const categoryToStateMap = {
+  'now_playing': 'nowPlaying',
+  'popular': 'popular', 
+  'top_rated': 'topRated',
+  'upcoming': 'upcoming'
+};
+
 const MoviesPage = () => {
   const dispatch = useDispatch();
   const { nowPlaying, popular, topRated, upcoming, status, error } = useSelector((state) => state.movies);
@@ -18,14 +26,6 @@ const MoviesPage = () => {
     'popular': 'Popular',
     'top_rated': 'Top Rated',
     'upcoming': 'Upcoming'
-  };
-
-  // Map API category names to Redux state properties
-  const categoryToStateMap = {
-    'now_playing': 'nowPlaying',
-    'popular': 'popular', 
-    'top_rated': 'topRated',
-    'upcoming': 'upcoming'
   };
 
   // Get movies for active category
@@ -56,7 +56,7 @@ const MoviesPage = () => {
     if (activeCategory && page === 1) {
       dispatch(fetchMoviesByCategory({ category: activeCategory, page: 1 }));
     }
-  }, [dispatch, activeCategory]);
+  }, [dispatch, activeCategory, page]);
   
   // Additional effect to prefetch all categories on initial load
   useEffect(() => {
@@ -75,7 +75,7 @@ const MoviesPage = () => {
         dispatch(fetchMoviesByCategory({ category, page: 1 }));
       }
     });
-  }, [dispatch]);
+  }, [dispatch, nowPlaying, popular, topRated, upcoming]);
 
   // Handle category change
   const handleCategoryChange = (category) => {
