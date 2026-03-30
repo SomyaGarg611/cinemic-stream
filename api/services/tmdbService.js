@@ -75,6 +75,11 @@ class TMDBService {
     });
   }
 
+  // Get TV show season details
+  async getTvShowSeason(id, seasonNumber) {
+    return await this.makeRequest(`/tv/${id}/season/${seasonNumber}`);
+  }
+
   // Search content
   async searchContent(type, query, page = 1) {
     const endpoint = type === 'multi' ? '/search/multi' : `/search/${type}`;

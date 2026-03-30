@@ -195,6 +195,28 @@ app.get('/api/tmdb/tv/:id', async (req, res) => {
   }
 });
 
+app.get('/api/tmdb/tv/:id/season/:seasonNumber', async (req, res) => {
+  try {
+    const { id, seasonNumber } = req.params;
+    
+    if (!id || isNaN(id)) {
+      return res.status(400).json({ error: 'Invalid TV show ID' });
+    }
+    
+    if (!seasonNumber || isNaN(seasonNumber)) {
+      return res.status(400).json({ error: 'Invalid season number' });
+    }
+    
+    const data = await makeTMDBRequest(`/tv/${id}/season/${seasonNumber}`);
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ 
+      error: 'Failed to fetch TV show season details',
+      message: error.message 
+    });
+  }
+});
+
 app.get('/api/tmdb/search/:type', async (req, res) => {
   try {
     const { type } = req.params;

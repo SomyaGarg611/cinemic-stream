@@ -148,6 +148,35 @@ const getTvShowDetails = async (req, res) => {
   }
 };
 
+// Get TV show season details
+const getTvShowSeason = async (req, res) => {
+  try {
+    const { id, seasonNumber } = req.params;
+    
+    if (!id || isNaN(id)) {
+      return res.status(400).json({ error: 'Invalid TV show ID' });
+    }
+    
+    if (!seasonNumber || isNaN(seasonNumber)) {
+      return res.status(400).json({ error: 'Invalid season number' });
+    }
+    
+    const data = await tmdbService.getTvShowSeason(id, seasonNumber);
+    res.json(data);
+    
+  } catch (error) {
+    console.error('Error in getTvShowSeason:', error);
+    if (error.response && error.response.status === 404) {
+      res.status(404).json({ error: 'TV show season not found' });
+    } else {
+      res.status(500).json({ 
+        error: 'Failed to fetch TV show season details',
+        message: error.message 
+      });
+    }
+  }
+};
+
 // Search content
 const searchContent = async (req, res) => {
   try {
@@ -233,7 +262,8 @@ module.exports = {
   getMoviesByCategory,
   getTvShowsByCategory,
   getMovieDetails,
-  getTvShowDetails,  
+  getTvShowDetails,
+  getTvShowSeason,  
   searchContent,
   getGenres,
   discoverContent
