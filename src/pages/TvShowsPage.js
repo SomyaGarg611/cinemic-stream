@@ -5,6 +5,14 @@ import LoadingSpinner from '../components/common/LoadingSpinner';
 import MediaGrid from '../components/common/MediaGrid';
 import HeroSection from '../components/common/HeroSection';
 
+// Map API category names to Redux state properties (moved outside component)
+const categoryToStateMap = {
+  'airing_today': 'airingToday',
+  'on_the_air': 'onTheAir',
+  'popular': 'popular',
+  'top_rated': 'topRated'
+};
+
 const TvShowsPage = () => {
   const dispatch = useDispatch();
   const { airingToday, onTheAir, popular, topRated, status, error } = useSelector((state) => state.tvShows);
@@ -18,14 +26,6 @@ const TvShowsPage = () => {
     'on_the_air': 'On The Air',
     'popular': 'Popular',
     'top_rated': 'Top Rated'
-  };
-
-  // Map API category names to Redux state properties
-  const categoryToStateMap = {
-    'airing_today': 'airingToday',
-    'on_the_air': 'onTheAir',
-    'popular': 'popular',
-    'top_rated': 'topRated'
   };
 
   // Get TV shows for active category
@@ -46,7 +46,7 @@ const TvShowsPage = () => {
     if (activeCategory && page === 1) {
       dispatch(fetchTvShowsByCategory({ category: activeCategory, page: 1 }));
     }
-  }, [dispatch, activeCategory]);
+  }, [dispatch, activeCategory, page]);
   
   // Additional effect to prefetch all categories on initial load
   useEffect(() => {
@@ -65,7 +65,7 @@ const TvShowsPage = () => {
         dispatch(fetchTvShowsByCategory({ category, page: 1 }));
       }
     });
-  }, [dispatch]);
+  }, [dispatch, airingToday, onTheAir, popular, topRated]);
 
   // Handle category change
   const handleCategoryChange = (category) => {
