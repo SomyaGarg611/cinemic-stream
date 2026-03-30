@@ -21,7 +21,12 @@ const StreamingModal = ({ isOpen, onClose, movie, mediaType = 'movie' }) => {
     { id: 2, name: 'Server 2', url: process.env.REACT_APP_MOVIE_SERVER2  },
     { id: 3, name: 'Server 3', url: process.env.REACT_APP_MOVIE_SERVER3  },
     { id: 4, name: 'Server 4', url: process.env.REACT_APP_MOVIE_SERVER4  },
-    { id: 5, name: 'Server 5', url: process.env.REACT_APP_MOVIE_SERVER5  }
+    { id: 5, name: 'Server 5', url: process.env.REACT_APP_MOVIE_SERVER5  },
+    { id: 6, name: 'Server 6', url: process.env.REACT_APP_MOVIE_SERVER6  },
+    { id: 7, name: 'Server 7', url: process.env.REACT_APP_MOVIE_SERVER7  },
+    { id: 8, name: 'Server 8', url: process.env.REACT_APP_MOVIE_SERVER8  },
+    { id: 9, name: 'Server 9', url: process.env.REACT_APP_MOVIE_SERVER9  },
+    { id: 10, name: 'Server 10', url: process.env.REACT_APP_MOVIE_SERVER10  }
   ];
   
   const tvServers = [
@@ -29,7 +34,12 @@ const StreamingModal = ({ isOpen, onClose, movie, mediaType = 'movie' }) => {
     { id: 2, name: 'Server 2', url: process.env.REACT_APP_TV_SERVER2  },
     { id: 3, name: 'Server 3', url: process.env.REACT_APP_TV_SERVER3  },
     { id: 4, name: 'Server 4', url: process.env.REACT_APP_TV_SERVER4  },
-    { id: 5, name: 'Server 5', url: process.env.REACT_APP_TV_SERVER5  }
+    { id: 5, name: 'Server 5', url: process.env.REACT_APP_TV_SERVER5  },
+    { id: 6, name: 'Server 6', url: process.env.REACT_APP_TV_SERVER6  },
+    { id: 7, name: 'Server 7', url: process.env.REACT_APP_TV_SERVER7  },
+    { id: 8, name: 'Server 8', url: process.env.REACT_APP_TV_SERVER8  },
+    { id: 9, name: 'Server 9', url: process.env.REACT_APP_TV_SERVER9  },
+    { id: 10, name: 'Server 10', url: process.env.REACT_APP_TV_SERVER10  }
   ];
 
   // Function to generate URL based on server and content
@@ -38,12 +48,18 @@ const StreamingModal = ({ isOpen, onClose, movie, mediaType = 'movie' }) => {
     const server = servers.find(s => s.id === serverId) || servers.find(s => s.id === 3); 
     
     if (mediaType === 'movie') {
+      // Handle special URL formats for certain servers
+      if (serverId === 10) { // uembed.xyz uses query parameter
+        return `${server.url}${contentId}`;
+      }
       return server.url + contentId;
     } else {
       // Handle different server URL formats for TV shows
       if (serverId === 4) { 
         return `${server.url}/${contentId}/${season}/${episode}`;
       } else if (serverId === 5) { // MultiEmbed
+        return `${server.url}${contentId}&s=${season}&e=${episode}`;
+      } else if (serverId === 10) { // uembed.xyz uses query parameter for TV too
         return `${server.url}${contentId}&s=${season}&e=${episode}`;
       } else {
         return `${server.url}${contentId}/${season}/${episode}`;
