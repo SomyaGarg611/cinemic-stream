@@ -185,19 +185,6 @@ vercel env add ADMIN_EMAIL
 vercel --prod
 ```
 
-### Method 2: Separate Frontend + Backend Deployment
-
-**Frontend (Vercel):**
-1. Create new Vercel project from GitHub
-2. Set build command: `npm run build`
-3. Set output directory: `build`
-4. Deploy automatically on push
-
-**Backend (Railway/Heroku/DigitalOcean):**
-1. Deploy `server/` folder to your preferred platform
-2. Set environment variables in platform dashboard
-3. Update frontend API URLs to point to deployed backend
-
 ## 📡 API Endpoints
 
 ### Movies
