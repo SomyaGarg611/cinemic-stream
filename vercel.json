@@ -1,16 +1,6 @@
 {
   "version": 2,
   "name": "cinemic",
-  "builds": [
-    {
-      "src": "build/**",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "api/index.js",
-      "use": "@vercel/node"
-    }
-  ],
   "routes": [
     {
       "src": "/api/(.*)",
@@ -18,7 +8,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/build/$1"
+      "dest": "/$1"
     }
   ],
   "env": {
@@ -31,7 +21,7 @@
   },
   "headers": [
     {
-      "source": "/build/static/(.*)",
+      "source": "/static/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
