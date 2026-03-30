@@ -68,8 +68,8 @@ cd ..
 ```env
 # TMDB API Configuration (Required)
 TMDB_API_KEY=your_tmdb_api_key_here
-TMDB_BASE_URL=https://api.themoviedb.org/3
-TMDB_IMAGE_BASE_URL=https://image.tmdb.org/t/p
+TMDB_BASE_URL=
+TMDB_IMAGE_BASE_URL=
 
 # Server Configuration
 FRONTEND_URL=http://localhost:3000
