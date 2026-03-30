@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleNav, closeNav } from '../../redux/slices/uiSlice';
-import { searchMedia } from '../../redux/slices/searchSlice';
+import { toggleNav, closeNav } from 'redux/slices/uiSlice';
+import { searchMedia } from 'redux/slices/searchSlice';
 
 const Header = () => {
   const dispatch = useDispatch();
